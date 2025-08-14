@@ -39,7 +39,7 @@ function showRandomQuote() {
   quoteDisplay.textContent = `"${filteredQuotes[randomIndex].text}" — ${filteredQuotes[randomIndex].category}`;
 }
 
-function addQuote() {
+function createAddQuoteForm() {
   const text = newQuoteText.value.trim();
   const category = newQuoteCategory.value.trim();
 
@@ -58,7 +58,7 @@ function addQuote() {
 
 
 newQuoteBtn.addEventListener("click", showRandomQuote);
-addQuoteBtn.addEventListener("click", addQuote);
+addQuoteBtn.addEventListener("click", createAddQuoteForm);
 categoryFilter.addEventListener("change", showRandomQuote);
 
 // Initial setup
