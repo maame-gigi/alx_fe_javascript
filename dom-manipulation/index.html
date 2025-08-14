@@ -7,8 +7,24 @@
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
+
+     <div>
+    <label for="categoryFilter">Choose Category:</label>
+    <select id="categoryFilter"></select>
+  </div>
+
+     <div class="form-section">
+    <h3>Add a New Quote</h3>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button id="addQuoteBtn">Add Quote</button>
+  </div>
+    
     <div id="quoteDisplay"></div>
     <button id="newQuote">Show New Quote</button>
+    
     <script src="script.js"></script>
+    
   </body>
   </html>
+
