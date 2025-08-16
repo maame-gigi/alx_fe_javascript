@@ -73,6 +73,8 @@ function filterQuotes() {
   showRandomQuote();
 }
 
+// --- SERVER SYNC ---
+
 async function fetchQuotesFromServer() {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
@@ -106,9 +108,33 @@ async function fetchQuotesFromServer() {
   }
 }
 
+async function postQuotesToServer() {
+  try {
+    for (const quote of quotes) {
+      await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title: quote.text,
+          body: quote.category,
+          userId: 1
+        })
+      });
+    }
+    console.log("Local quotes synced to server.");
+  } catch (err) {
+    console.error("Error posting to server:", err);
+  }
+}
+
 function syncWithServer() {
   fetchQuotesFromServer();
+  postQuotesToServer();
 }
+
+// --- EVENT HANDLERS ---
 
 newQuoteBtn.addEventListener("click", showRandomQuote);
 addQuoteBtn.addEventListener("click", createAddQuoteForm);
@@ -126,6 +152,7 @@ if (lastQuote) {
 
 syncWithServer();
 setInterval(syncWithServer, 15000);
+
 
 
 
