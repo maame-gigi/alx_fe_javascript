@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
 </head>
 <body>
@@ -13,6 +13,15 @@
     <select id="categoryFilter"></select>
   </div>
 
+  <div id="quoteDisplay"></div>
+  <div id="meta"></div>
+
+  <div>
+    <button id="newQuote">Show New Quote</button>
+    <button id="syncBtn">Sync Now</button>
+    <button id="conflictBtn">Review Conflicts</button>
+  </div>
+
   <div class="form-section">
     <h3>Add a New Quote</h3>
     <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
@@ -20,10 +29,19 @@
     <button id="addQuoteBtn">Add Quote</button>
   </div>
 
-  <div id="quoteDisplay"></div>
-  <button id="newQuote">Show New Quote</button>
+  <div id="status"></div>
+
+  <div id="conflictPanel" style="display:none;">
+    <h3>Conflicts</h3>
+    <div>
+      <button id="resolveServerAll">Use Server For All</button>
+      <button id="resolveLocalAll">Use Local For All</button>
+    </div>
+    <ul id="conflictList"></ul>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
