@@ -73,8 +73,6 @@ function filterQuotes() {
   showRandomQuote();
 }
 
-// --- SERVER SYNC ---
-
 async function fetchQuotesFromServer() {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
@@ -129,12 +127,10 @@ async function postQuotesToServer() {
   }
 }
 
-function syncWithServer() {
-  fetchQuotesFromServer();
-  postQuotesToServer();
+async function syncQuotes() {
+  await fetchQuotesFromServer();
+  await postQuotesToServer();
 }
-
-// --- EVENT HANDLERS ---
 
 newQuoteBtn.addEventListener("click", showRandomQuote);
 addQuoteBtn.addEventListener("click", createAddQuoteForm);
@@ -150,8 +146,9 @@ if (lastQuote) {
   showRandomQuote();
 }
 
-syncWithServer();
-setInterval(syncWithServer, 15000);
+syncQuotes();
+setInterval(syncQuotes, 15000);
+
 
 
 
