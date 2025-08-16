@@ -121,7 +121,7 @@ async function postQuotesToServer() {
         })
       });
     }
-    console.log("Local quotes synced to server.");
+    console.log("Quotes synced with server!");
   } catch (err) {
     console.error("Error posting to server:", err);
   }
@@ -148,8 +148,3 @@ if (lastQuote) {
 
 syncQuotes();
 setInterval(syncQuotes, 15000);
-
-
-
-
-
